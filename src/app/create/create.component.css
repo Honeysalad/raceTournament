@@ -1,0 +1,16 @@
+.container {
+    margin-top: 2em;
+}
+h2, h3, h4, button{
+    margin: 0.5em 0 1em 0;
+}
+.section {
+    margin: 0.5em 1em;
+    background-color: #dfe4ea;
+    border-radius: 0.5em;
+    padding: 1em;
+}
+
+.section .section {
+    background-color: #ced6e0
+}
