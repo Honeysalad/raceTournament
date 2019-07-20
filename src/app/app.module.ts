@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { CreateComponent } from './create/create.component';
+import { RaceComponent } from './race/race.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopoComponent,
-    CreateComponent
+    CreateComponent,
+    RaceComponent
   ],
   imports: [
     BrowserModule,
