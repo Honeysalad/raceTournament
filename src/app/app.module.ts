@@ -7,6 +7,7 @@ import { TopoComponent } from './topo/topo.component';
 import { CreateComponent } from './create/create.component';
 import { RaceComponent } from './race/race.component';
 import { ResultsComponent } from './results/results.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ResultsComponent } from './results/results.component';
     TopoComponent,
     CreateComponent,
     RaceComponent,
-    ResultsComponent
+    ResultsComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
