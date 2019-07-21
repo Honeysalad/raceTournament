@@ -11,7 +11,19 @@ h2, h3, h4, button{
     background-color: #c23616;
     border-color: #e84118;
 }
+.btn-primary:disabled {
+    background-color: #c57867;
+    border-color: #e68f79;
+}
+.btn-primary:hover {
+    background-color: #dfe4ea;
+    color: #c23616;
+    border-color: #e84118;
+}
 .position{
     background-color: #dfe4ea;
     margin-bottom: 0.5em;
+}
+a {
+    color: #c23616;
 }
