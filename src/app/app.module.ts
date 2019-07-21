@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { CreateComponent } from './create/create.component';
 import { RaceComponent } from './race/race.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopoComponent,
     CreateComponent,
-    RaceComponent
+    RaceComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

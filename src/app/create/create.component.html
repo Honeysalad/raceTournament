@@ -1,125 +1,124 @@
-<div class="container">
-    <h1>Create</h1>
-    Create a tournament
-    <hr>
+<h1>Create</h1>
+Create a tournament
+<hr>
 
-    <form>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input 
-                        type="text"
-                        class="form-control"
-                        name="name" id="name"
-                        placeholder="ex: 2002 Formula 5 Cornwall Championship"
-                    >
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="races">Races</label>
-                    <input
-                        type="number"
-                        class="form-control"
-                        name="races" id="races"
-                        placeholder="ex: 21"
-                    >
-                </div>
+<form>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input 
+                    type="text"
+                    class="form-control"
+                    name="name" id="name"
+                    placeholder="ex: 2002 Formula 5 Cornwall Championship"
+                >
             </div>
         </div>
-        
-       
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="races">Races</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    name="races" id="races"
+                    placeholder="ex: 21"
+                >
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="form-group">
+        <label for="score">Score system (from first to <i>n</i> place)</label>
+        <input
+            type="text"
+            class="form-control"
+            name="score" id="score"
+            placeholder="ex: 25 18 15 12 10 8 6 4 2 1"
+        >
+    </div>
+
+    <hr>
+
+    <h2>Teams</h2>
+
+    <div class="section"> <!-- ngFor here -->
+        <h3>Team 1</h3>
         <div class="form-group">
-            <label for="score">Score system (from first to <i>n</i> place)</label>
+            <label for="team1entrant">Entrant (full name with title sponsor, if have)</label>
             <input
                 type="text"
                 class="form-control"
-                name="score" id="score"
-                placeholder="ex: 25 18 15 12 10 8 6 4 2 1"
+                name="team1entrant" id="team1entrant"
+                placeholder="ex: Cheese Brand Adams Race Team"
             >
         </div>
-
-        <hr>
-
-        <h2>Teams</h2>
-
-        <div class="section"> <!-- ngFor here -->
-            <h3>Team 1</h3>
-            <div class="form-group">
-                <label for="team1entrant">Entrant (full name with title sponsor, if have)</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    name="team1entrant" id="team1entrant"
-                    placeholder="ex: Cheese Brand Adams Race Team"
-                >
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="team1name">Team name (only the team name, short one)</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="team1name" id="team1name"
+                        placeholder="ex: Adams"
+                    >
+                </div>
             </div>
-            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="team1country">Team Country</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="team1country" id="team1country"
+                        placeholder="ex: United Kingdom"
+                    >
+                </div>
+            </div>
+        </div>  
+        <h4>Pilots</h4>
+        <div class="section"> 
+            <div class="row"> <!--ngFor here-->
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="team1name">Team name (only the team name, short one)</label>
+                        <label for="team1pilot1name">Name</label>
                         <input
                             type="text"
                             class="form-control"
-                            name="team1name" id="team1name"
-                            placeholder="ex: Adams"
+                            name="team1pilot1name" id="team1pilot1name"
+                            placeholder="ex: John Smith"
                         >
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label for="team1country">Team Country</label>
+                        <label for="team1pilot1country">Country</label>
                         <input
                             type="text"
                             class="form-control"
-                            name="team1country" id="team1country"
+                            name="team1pilot1country" id="team1pilot1country"
                             placeholder="ex: United Kingdom"
                         >
                     </div>
                 </div>
-            </div>  
-            <h4>Pilots</h4>
-            <div class="section"> 
-                <div class="row"> <!--ngFor here-->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="team1pilot1name">Name</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                name="team1pilot1name" id="team1pilot1name"
-                                placeholder="ex: John Smith"
-                            >
-                        </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="team1pilot1number">Number</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="team1pilot1number" id="team1pilot1number"
+                            placeholder="ex: 42"
+                        >
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="team1pilot1country">Country</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                name="team1pilot1country" id="team1pilot1country"
-                                placeholder="ex: United Kingdom"
-                            >
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="team1pilot1number">Number</label>
-                            <input
-                                type="number"
-                                class="form-control"
-                                name="team1pilot1number" id="team1pilot1number"
-                                placeholder="ex: 42"
-                            >
-                        </div>
-                    </div>      
-                </div>
-                <a href="#">Add pilot</a>   
+                </div>      
             </div>
-            <a href="#">Add team</a>
         </div>
-        <button type="submit" class="btn btn-primary">Everything is in it's right place</button>
-    </form>
-</div>
+        <a href="#">Add pilot</a>   
+    </div>
+    <a href="#">Add team</a>
+    <br><br>
+    <button type="submit" class="btn btn-primary">Everything is in it's right place</button>
+</form>
