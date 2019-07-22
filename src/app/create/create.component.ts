@@ -29,7 +29,7 @@ export class CreateComponent implements OnInit {
   }
 
   public createTournament(): void {
-    console.log(this.form.controls);
+    console.log(this.form.value);
   }
 
 }
