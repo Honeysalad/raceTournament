@@ -1,9 +1,12 @@
+import { Team } from './team.model';
+
 export class Tournament {
 
     constructor(
         private name: string,
         private races: number,
-        private score: number[]
+        private score: number[],
+        private teams: Team[]
     ) { }
 
     public setName(name: string): void {
@@ -28,5 +31,12 @@ export class Tournament {
 
     public getScore(): number[] {
         return this.score;
+    }
+
+    public setTeams(teams: Team[]): void {
+        this.teams = teams;
+    }
+    public getTeams(): Team[] {
+        return this.teams;
     }
 }
