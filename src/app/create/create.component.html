@@ -78,48 +78,56 @@ Create a tournament
                     </div>
                 </div>
                 <h4>Driver</h4>
-                <div class="section" formArrayName="drivers"> 
-                    <div class="row" *ngFor="let driver of team.get('drivers').controls; let driverIndex = index;" [formGroupName]="driverIndex">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    formControlName="name" id="name"
-                                    placeholder="ex: John Smith"
-                                >
+                <div formArrayName="drivers">
+                    <div class="section" *ngFor="let driver of team.get('drivers').controls; let driverIndex = index;" [formGroupName]="driverIndex"> 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="name" id="name"
+                                        placeholder="ex: John Smith"
+                                    >
+                                </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="country" id="country"
+                                        placeholder="ex: United Kingdom"
+                                    >
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="number">Number</label>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="number" id="number"
+                                        placeholder="ex: 42"
+                                    >
+                                </div>
+                            </div> 
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="country">Country</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    formControlName="country" id="country"
-                                    placeholder="ex: United Kingdom"
-                                >
-                            </div>
+                        <div class="d-flex flex-row-reverse">
+                            <button class="btn btn-link" (click)="removeDriver(team, driverIndex)">Remove driver</button>
                         </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="number">Number</label>
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    formControlName="number" id="number"
-                                    placeholder="ex: 42"
-                                >
-                            </div>
-                        </div> 
                     </div>
                 </div>
-                <a (click)="addDriver(team)">Add driver</a>   
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-link" (click)="addDriver(team)" >Add driver</button>
+                    <button class="btn btn-link" (click)="removeTeam(team)">Remove team</button>   
+                </div>
             </div>
         </div>
     </div>
-    <a (click)="addTeam()">Add team</a>
+    <button class="btn btn-link" (click)="addTeam()">Add team</button>
     <br><br>
     <button 
         type="submit"

@@ -7,18 +7,17 @@
 h2, h3, h4, button{
     margin: 0.5em 0 1em 0;
 }
-.btn-primary {
+.btn-primary, .btn-primary:disabled {
     background-color: #c23616;
     border-color: #e84118;
-}
-.btn-primary:disabled {
-    background-color: #c57867;
-    border-color: #e68f79;
 }
 .btn-primary:hover {
     background-color: #dfe4ea;
     color: #c23616;
     border-color: #e84118;
+}
+.btn-link, .btn-link:hover {
+    color: #c23616;
 }
 .position{
     background-color: #dfe4ea;

@@ -32,7 +32,7 @@ export class CreateComponent implements OnInit {
     return this.fb.group({
       entrant: [null, Validators.compose([Validators.required])],
       name: [null, Validators.compose([Validators.required])],
-      country: [null, Validators.compose([Validators.required])],
+      country: [null],
       drivers: this.fb.array([this.driverFormGroup])
     });
   }
@@ -40,7 +40,7 @@ export class CreateComponent implements OnInit {
   get driverFormGroup(): FormGroup {
     return this.fb.group({
       name: [null, Validators.compose([Validators.required])],
-      country: [null, Validators.compose([Validators.required])],
+      country: [null],
       number: [null, Validators.compose([Validators.required])]
     });
   }
