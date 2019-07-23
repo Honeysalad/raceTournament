@@ -40,47 +40,46 @@ Create a tournament
     <hr>
 
     <h2>Teams</h2>
-
-    <div class="section" formArrayName="teams">
-        <h3>Team 1</h3>
-        <div *ngFor="let team of teamFormGroup.controls; let i = index;" [formGroupName]="i">
-            <div class="form-group">
-                <label for="entrant">Entrant (full name with title sponsor, if having)</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    formControlName="entrant" id="entrant"
-                    placeholder="ex: Cheese Brand Adams Race Team"
-                >
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="name">Team name (only the team name, short one)</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            formControlName="name" id="name"
-                            placeholder="ex: Adams"
-                        >
+    <div formArrayName="teams">
+        <div class="section" *ngFor="let team of form.get('teams').controls; let teamIndex = index;" [formGroupName]="teamIndex">
+            <h3>Team {{teamIndex + 1}}</h3>
+            <div>
+                <div class="form-group">
+                    <label for="entrant">Entrant (full name with title sponsor, if having)</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        formControlName="entrant" id="entrant"
+                        placeholder="ex: Cheese Brand Adams Race Team"
+                    >
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Team name (only the team name, short one)</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                formControlName="name" id="name"
+                                placeholder="ex: Adams"
+                            >
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="country">Team Country</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                formControlName="country" id="country"
+                                placeholder="ex: United Kingdom"
+                            >
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="country">Team Country</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            formControlName="country" id="country"
-                            placeholder="ex: United Kingdom"
-                        >
-                    </div>
-                </div>
-            </div>
-            <h4>Driver</h4>
-            <div class="section" formArrayName="drivers"> 
-                <div class="row" *ngFor="let driver of driverFormGroup.controls; let i = index;" [formGroupName="i"]>
-                    <div>
+                <h4>Driver</h4>
+                <div class="section" formArrayName="drivers"> 
+                    <div class="row" *ngFor="let driver of team.get('drivers').controls; let driverIndex = index;" [formGroupName]="driverIndex">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -113,11 +112,11 @@ Create a tournament
                                     placeholder="ex: 42"
                                 >
                             </div>
-                        </div>      
+                        </div> 
                     </div>
                 </div>
+                <a (click)="addDriver(team)">Add driver</a>   
             </div>
-            <a (click)="addDriver()">Add driver</a>   
         </div>
     </div>
     <a (click)="addTeam()">Add team</a>

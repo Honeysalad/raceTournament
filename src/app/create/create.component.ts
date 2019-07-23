@@ -13,7 +13,6 @@ export class CreateComponent implements OnInit {
 
   public form: FormGroup;
   public teamList: FormArray;
-  public driverList: FormArray;
 
   constructor(private fb: FormBuilder) { }
 
@@ -23,23 +22,22 @@ export class CreateComponent implements OnInit {
       name: [null, Validators.compose([Validators.required])],
       races: [null, Validators.compose([Validators.required])],
       score: [null, Validators.compose([Validators.required])],
-      teams: this.fb.array([this.createTeam()])
+      teams: this.fb.array([this.teamFormGroup])
     });
 
     this.teamList = this.form.get('teams') as FormArray;
-    this.driverList = this.form.get('drivers') as FormArray;
   }
 
-  public createTeam(): FormGroup {
+  get teamFormGroup(): FormGroup {
     return this.fb.group({
       entrant: [null, Validators.compose([Validators.required])],
       name: [null, Validators.compose([Validators.required])],
       country: [null, Validators.compose([Validators.required])],
-      drivers: this.fb.array([this.createDriver()])
+      drivers: this.fb.array([this.driverFormGroup])
     });
   }
 
-  public createDriver(): FormGroup {
+  get driverFormGroup(): FormGroup {
     return this.fb.group({
       name: [null, Validators.compose([Validators.required])],
       country: [null, Validators.compose([Validators.required])],
@@ -48,25 +46,26 @@ export class CreateComponent implements OnInit {
   }
 
   public addTeam(): void {
-    this.teamList.push(this.createTeam());
+    this.teamList.push(this.teamFormGroup);
   }
 
   public removeTeam(index: number): void {
     this.teamList.removeAt(index);
   }
 
-  public addDriver(): void {
-    this.driverList.push(this.createDriver());
+  public addDriver(team): void {
+    team.get('drivers').push(this.driverFormGroup);
   }
 
-  public removeDriver(index: number): void {
-    this.driverList.removeAt(index);
+  public removeDriver(team, index: number): void {
+    team.get('drivers').removeAt(index);
   }
 
   public createTournament(): void {
     console.log(this.form.value);
   }
 
+  /*
   public get teamFormGroup() {
     return this.form.get('teams') as FormArray;
   }
@@ -74,5 +73,6 @@ export class CreateComponent implements OnInit {
   public get driverFormGroup() {
     return this.form.get('drivers') as FormArray;
   }
+  */
 
 }
