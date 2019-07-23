@@ -27,8 +27,6 @@ Create a tournament
             </div>
         </div>
     </div>
-    
-    
     <div class="form-group">
         <label for="score">Score system (from first to <i>n</i> place)</label>
         <input
@@ -43,82 +41,86 @@ Create a tournament
 
     <h2>Teams</h2>
 
-    <div class="section"> <!-- ngFor here -->
+    <div class="section" formArrayName="teams">
         <h3>Team 1</h3>
-        <div class="form-group">
-            <label for="team1entrant">Entrant (full name with title sponsor, if having)</label>
-            <input
-                type="text"
-                class="form-control"
-                formControlName="team1entrant" id="team1entrant"
-                placeholder="ex: Cheese Brand Adams Race Team"
-            >
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="team1name">Team name (only the team name, short one)</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        formControlName="team1name" id="team1name"
-                        placeholder="ex: Adams"
-                    >
-                </div>
+        <div *ngFor="let team of teamFormGroup.controls; let i = index;" [formGroupName]="i">
+            <div class="form-group">
+                <label for="entrant">Entrant (full name with title sponsor, if having)</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="entrant" id="entrant"
+                    placeholder="ex: Cheese Brand Adams Race Team"
+                >
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="team1country">Team Country</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        formControlName="team1country" id="team1country"
-                        placeholder="ex: United Kingdom"
-                    >
-                </div>
-            </div>
-        </div>  
-        <h4>Pilots</h4>
-        <div class="section"> 
-            <div class="row"> <!--ngFor here-->
+            <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="team1pilot1name">Name</label>
+                        <label for="name">Team name (only the team name, short one)</label>
                         <input
                             type="text"
                             class="form-control"
-                            formControlName="team1pilot1name" id="team1pilot1name"
-                            placeholder="ex: John Smith"
+                            formControlName="name" id="name"
+                            placeholder="ex: Adams"
                         >
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-group">
-                        <label for="team1pilot1country">Country</label>
+                        <label for="country">Team Country</label>
                         <input
                             type="text"
                             class="form-control"
-                            formControlName="team1pilot1country" id="team1pilot1country"
+                            formControlName="country" id="country"
                             placeholder="ex: United Kingdom"
                         >
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="team1pilot1number">Number</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            formControlName="team1pilot1number" id="team1pilot1number"
-                            placeholder="ex: 42"
-                        >
-                    </div>
-                </div>      
             </div>
+            <h4>Driver</h4>
+            <div class="section" formArrayName="drivers"> 
+                <div class="row" *ngFor="let driver of driverFormGroup.controls; let i = index;" [formGroupName="i"]>
+                    <div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    formControlName="name" id="name"
+                                    placeholder="ex: John Smith"
+                                >
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    formControlName="country" id="country"
+                                    placeholder="ex: United Kingdom"
+                                >
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="number">Number</label>
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    formControlName="number" id="number"
+                                    placeholder="ex: 42"
+                                >
+                            </div>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+            <a (click)="addDriver()">Add driver</a>   
         </div>
-        <a href="#">Add pilot</a>   
     </div>
-    <a href="#">Add team</a>
+    <a (click)="addTeam()">Add team</a>
     <br><br>
     <button 
         type="submit"
