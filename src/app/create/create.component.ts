@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tournament } from '../shared/tournament.model';
+import { Team } from '../shared/team.model';
 
 @Component({
   selector: 'app-create',
@@ -62,17 +63,19 @@ export class CreateComponent implements OnInit {
   }
 
   public createTournament(): void {
-    console.log(this.form.value);
-  }
+    // console.log(this.form.value);
+    // console.log(this.teamList.value.length);
+    let teamArray: Team[] = [];
 
-  /*
-  public get teamFormGroup() {
-    return this.form.get('teams') as FormArray;
+    for (let team of this.teamList.value) {
+      teamArray.push(team);
+    }
+    this.tournament = new Tournament(
+      this.form.get('name').value,
+      this.form.get('races').value,
+      this.form.get('score').value.split(),
+      teamArray
+    );
+    console.log(this.tournament);
   }
-
-  public get driverFormGroup() {
-    return this.form.get('drivers') as FormArray;
-  }
-  */
-
 }
