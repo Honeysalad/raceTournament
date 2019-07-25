@@ -63,8 +63,6 @@ export class CreateComponent implements OnInit {
   }
 
   public createTournament(): void {
-    // console.log(this.form.value);
-    // console.log(this.teamList.value.length);
     let teamArray: Team[] = [];
 
     for (let team of this.teamList.value) {

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +11,7 @@ import { CreateComponent } from './create/create.component';
 import { RaceComponent } from './race/race.component';
 import { ResultsComponent } from './results/results.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]
