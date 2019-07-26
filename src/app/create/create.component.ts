@@ -77,7 +77,7 @@ export class CreateComponent implements OnInit {
     this.tournament = new Tournament(
       this.form.get('name').value,
       this.form.get('races').value,
-      this.form.get('score').value.split(),
+      this.form.get('score').value.split(' ').map(Number),
       teamArray
     );
     this.tournamentService.setTournament(this.tournament);
