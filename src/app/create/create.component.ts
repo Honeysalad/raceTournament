@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Tournament } from '../shared/tournament.model';
 import { Team } from '../shared/team.model';
+import { Router } from '@angular/router';
+import { TournamentService } from '../tournament.service';
 
 @Component({
   selector: 'app-create',
@@ -15,7 +17,11 @@ export class CreateComponent implements OnInit {
   public form: FormGroup;
   public teamList: FormArray;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private tournamentService: TournamentService
+  ) { }
 
 
   ngOnInit() {
@@ -74,6 +80,7 @@ export class CreateComponent implements OnInit {
       this.form.get('score').value.split(),
       teamArray
     );
-    console.log(this.tournament);
+    this.tournamentService.setTournament(this.tournament);
+    this.router.navigate(['/race']);
   }
 }

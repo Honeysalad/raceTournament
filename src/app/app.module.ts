@@ -12,6 +12,7 @@ import { RaceComponent } from './race/race.component';
 import { ResultsComponent } from './results/results.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ROUTES } from './app.routes';
+import { TournamentService } from './tournament.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ROUTES } from './app.routes';
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
