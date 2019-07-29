@@ -51,7 +51,17 @@ export class RaceComponent implements OnInit {
   }
 
   public endRace(): void {
-    console.log(this.leaderboard.value);
+    for (let i = 0; i < this.tournament.getScore().length; i++) {
+      for (let team of this.tournament.getTeams()) {
+        for (let driver of team.getDrivers()) {
+          if (driver.getNo() === this.leaderboard.value[i].place) {
+            driver.setPoints(driver.getPoints() + this.tournament.getScore()[i]);
+            break;
+          }
+        }
+      }
+    }
+    console.log(this.tournament.getTeams());
   }
-
 }
+
