@@ -45,3 +45,6 @@ testem.log
 .DS_Store
 Thumbs.db
 node_modules
+
+src/app/tournament.ts
+src/app/tournament.service.ts
