@@ -1,8 +1,8 @@
 import { Tournament } from './shared/tournament.model';
-
+import { TOURNAMENT } from './tournament';
 export class TournamentService {
 
-    private tournament: Tournament;
+    private tournament: Tournament = TOURNAMENT;
 
     public getTournament(): Tournament {
         return this.tournament;
