@@ -1,21 +1,30 @@
 <h1>Race 1</h1>
 <hr>
 
-<form>
-    <div class="form-group"> <!--ngFor here-->
-        <div class="row">
-            <div class="col-md-1">
-                <label for="1place"><b>1</b></label>
-            </div>
-            <div class="col-md-11">
-                <input 
-                    type="text"
-                    class="form-control"
-                    name="1place" id="1place"
-                    placeholder="Pilot's surname"
-                >
+<form [formGroup]="form" novalidate (ngSubmit)="endRace()">
+    <div formArrayName="places">
+        <div class="form-group" *ngFor="let place of form.get('places').controls; let placeIndex = index;" [formGroupName]="placeIndex">
+            <div class="row">
+                <div class="col-md-1">
+                    <label for="place">
+                        <b *ngIf="placeIndex < tournament.getScore().length; else optionalPlace">{{placeIndex + 1}}</b>
+                        <ng-template #optionalPlace>{{placeIndex + 1}}</ng-template>
+                    </label>
+                </div>
+                <div class="col-md-11">
+                    <input 
+                        type="number"
+                        class="form-control"
+                        formControlName="place" id="place"
+                        placeholder="Pilot's car number"
+                    >
+                </div>
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">End Race</button>
+    <button 
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!form.valid"
+    >End Race</button>
 </form>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TournamentService } from '../tournament.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Tournament } from '../shared/tournament.model';
 
 @Component({
   selector: 'app-race',
@@ -8,12 +11,47 @@ import { TournamentService } from '../tournament.service';
 })
 export class RaceComponent implements OnInit {
 
+  tournament: Tournament;
+
+  public form: FormGroup;
+  public leaderboard: FormArray;
+
   constructor(
-    private tournamentService: TournamentService
+    private tournamentService: TournamentService,
+    private router: Router,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    console.log(this.tournamentService.getTournament());
+    this.tournament = this.tournamentService.getTournament();
+    console.log(this.tournament);
+
+    this.form = this.fb.group({places: this.fb.array([])});
+    this.leaderboard = this.form.get('places') as FormArray;
+
+    for (let team of this.tournament.getTeams()) {
+      for (let driver of team.getDrivers()) {
+        this.leaderboard.push(this.placeFormGroup);
+      }
+    }
+  }
+
+  get placeFormGroup(): FormGroup {
+    if (this.leaderboard.value.length < this.tournament.getScore().length) {
+      console.log('points zone');
+      return this.fb.group({
+        place: [null, Validators.compose([Validators.required])]
+      });
+    } else {
+      console.log('optional place');
+      return this.fb.group({
+        place: [null]
+      });
+    }
+  }
+
+  public endRace(): void {
+    console.log(this.leaderboard.value);
   }
 
 }
