@@ -46,4 +46,8 @@ export class Tournament {
     public doRace(): void {
         this.doneRaces += 1;
     }
+
+    public getDoneRaces(): number {
+        return this.doneRaces;
+    }
 }
