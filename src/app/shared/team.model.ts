@@ -40,7 +40,7 @@ export class Team extends Native {
     public sumPoints(): number {
         let points: number;
         for (let driver of this.drivers) {
-            points += driver.getPoints();
+            points += driver.getPoints().reduce((total, num) => total + num , 0);
         }
         return points;
     }
