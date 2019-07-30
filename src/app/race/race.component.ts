@@ -38,12 +38,10 @@ export class RaceComponent implements OnInit {
 
   get placeFormGroup(): FormGroup {
     if (this.leaderboard.value.length < this.tournament.getScore().length) {
-      console.log('points zone');
       return this.fb.group({
         place: [null, Validators.compose([Validators.required])]
       });
     } else {
-      console.log('optional place');
       return this.fb.group({
         place: [null]
       });
@@ -51,17 +49,29 @@ export class RaceComponent implements OnInit {
   }
 
   public endRace(): void {
-    for (let i = 0; i < this.tournament.getScore().length; i++) {
+    let race: number[] = [];
+    for (const [i, place] of this.leaderboard.controls.entries()) {
       for (let team of this.tournament.getTeams()) {
         for (let driver of team.getDrivers()) {
-          if (driver.getNo() === this.leaderboard.value[i].place) {
-            driver.setPoints(driver.getPoints() + this.tournament.getScore()[i]);
+          console.log(place.value);
+          if (driver.getNo() === place.value.place) {
+            driver.assignPoints(i < this.tournament.getScore().length ? this.tournament.getScore()[i] : 0);
             break;
           }
         }
       }
     }
-    console.log(this.tournament.getTeams());
+
+    for (let team of this.tournament.getTeams()) {
+      for (let driver of team.getDrivers()) {
+        if (driver.getPoints().length !== this.tournament.getDoneRaces() + 1) {
+          driver.assignPoints(0);
+        }
+      }
+    }
+
+    this.tournamentService.setTournament(this.tournament);
+    this.router.navigate(['/results']);
   }
 }
 
