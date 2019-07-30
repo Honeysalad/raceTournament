@@ -2,13 +2,15 @@ import { Native } from './native.model';
 
 export class Driver extends Native {
 
+    private points: number[];
+
     constructor(
         private name: string,
         private no: number,
-        private points: number,
         country: string
     ) {
         super(country);
+        this.points = [];
     }
 
     public setName(name: string): void {
@@ -27,12 +29,16 @@ export class Driver extends Native {
         return this.no;
     }
 
-    public setPoints(points: number): void {
+    public setPoints(points: number[]): void {
         this.points = points;
     }
 
-    public getPoints(): number {
+    public getPoints(): number[] {
         return this.points;
+    }
+
+    public assignPoints(points: number): void {
+        this.points.push(points);
     }
 
 }
