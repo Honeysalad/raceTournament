@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TournamentService } from '../tournament.service';
 import { Tournament } from '../shared/tournament.model';
 import { Router } from '@angular/router';
-import { Driver } from '../shared/driver.model';
 
 @Component({
   selector: 'app-results',
@@ -24,10 +23,11 @@ export class ResultsComponent implements OnInit {
     this.tournament = this.tournamentService.getTournament();
     this.race = this.tournamentService.getLastRace();
 
-    for (let [i, number] of this.race.entries()) {
+    // tslint:disable: prefer-const
+    for (let [i, no] of this.race.entries()) {
       for (let team of this.tournament.getTeams()) {
         for (let driver of team.getDrivers()) {
-          if (driver.getNo() === number) {
+          if (driver.getNo() === no) {
             this.grid.push([driver.getName(), team.getName(), driver.getPoints()[driver.getPoints().length - 1]]);
           }
         }
