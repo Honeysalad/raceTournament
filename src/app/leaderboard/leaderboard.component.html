@@ -1,60 +1,36 @@
 <h1>Championship Leaderboard</h1>
 <hr>
-
 <h2>Drivers Championship</h2>
-<div class="row position"><!-- ngFor here -->
+<div class="row position" *ngFor="let driver of driversLeaderboard; index as i">
     <div class="col-md-1">
-        1
+        {{i+1}}
     </div>
     <div class="col-md-5">
-        Pilot <b>Lastname</b>
+        {{driver[0]}}
     </div>
     <div class="col-md-5">
-        Team Name
+        {{driver[1]}}
     </div>
     <div class="col-md-1">
-        25
+        {{driver[2]}}
     </div>
 </div>
 
-<div class="row position"><!-- just for test -->
-    <div class="col-md-1">
-        2
-    </div>
-    <div class="col-md-5">
-        Another <b>Lastname</b>
-    </div>
-    <div class="col-md-5">
-        Other Team
-    </div>
-    <div class="col-md-1">
-        18
-    </div>
-</div>
 <br>
 <h2>Teams Championship</h2>
-<div class="row position"><!-- ngFor here -->
+<div class="row position" *ngFor="let team of teamsLeaderboard; index as i">
     <div class="col-md-1">
-        1
+        {{i+1}}
     </div>
     <div class="col-md-10">
-        Team Entrant Full <b>Team Name</b>
+        {{team.getEntrant()}}
     </div>
     <div class="col-md-1">
-        25
-    </div>
-</div>
-<div class="row position"><!-- just for test -->
-    <div class="col-md-1">
-        1
-    </div>
-    <div class="col-md-10">
-        Same Thing but with <b>Other Team</b>
-    </div>
-    <div class="col-md-1">
-        18
+        {{team.sumPoints()}}
     </div>
 </div>
 <br>
-<button class="btn btn-primary">Next Race or End Championship</button><!--ngIf or something else for text-->
+<button class="btn btn-primary">
+    Next Race or End Championship
+</button><!--ngIf or something else for text-->
 
