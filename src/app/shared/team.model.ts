@@ -38,9 +38,9 @@ export class Team extends Native {
     }
 
     public sumPoints(): number {
-        let points: number;
+        let points: number = 0;
         for (let driver of this.drivers) {
-            points += driver.getPoints().reduce((total, num) => total + num , 0);
+            points += driver.sumPoints();
         }
         return points;
     }

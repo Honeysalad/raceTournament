@@ -41,4 +41,8 @@ export class Driver extends Native {
         this.points.push(points);
     }
 
+    public sumPoints(): number {
+        return this.points.reduce((total, num) => total + num , 0);
+    }
+
 }
