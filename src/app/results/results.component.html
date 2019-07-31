@@ -1,34 +1,19 @@
-<h1>Race 1 Results</h1>
+<h1>Race {{tournament.getDoneRaces()}} Results</h1>
 <hr>
 
-<div class="row position"><!-- ngFor here -->
+<div class="row position" *ngFor="let driver of grid; index as i"><!-- ngFor here -->
     <div class="col-md-1">
-        1
+        {{i + 1}}
     </div>
     <div class="col-md-5">
-        Pilot <b>Lastname</b>
+        {{driver[0]}}
     </div>
     <div class="col-md-5">
-        Team Name
+        {{driver[1]}}
     </div>
     <div class="col-md-1">
-        25
-    </div>
-</div>
-
-<div class="row position"><!-- just for test -->
-    <div class="col-md-1">
-        2
-    </div>
-    <div class="col-md-5">
-        Another <b>Lastname</b>
-    </div>
-    <div class="col-md-5">
-        Other Team
-    </div>
-    <div class="col-md-1">
-        18
+        {{driver[2]}}
     </div>
 </div>
 <br>
-<button href="#" class="btn btn-primary">Championship Leaderboard</button>
+<button routerLink="/leaderboard" class="btn btn-primary">Championship Leaderboard</button>
