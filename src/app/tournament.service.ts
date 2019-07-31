@@ -1,5 +1,7 @@
 import { Tournament } from './shared/tournament.model';
 import { TOURNAMENT } from './tournament';
+import { Driver } from './shared/driver.model';
+
 export class TournamentService {
 
     private tournament: Tournament = TOURNAMENT;
@@ -11,5 +13,17 @@ export class TournamentService {
 
     public setTournament(tournament: Tournament): void {
         this.tournament = tournament;
+    }
+
+    public getRaces(): number[][] {
+        return this.races;
+    }
+
+    public getLastRace(): number[] {
+        return this.races[this.races.length - 1];
+    }
+
+    public registerRace(race: number[]): void {
+        this.races.push(race);
     }
 }

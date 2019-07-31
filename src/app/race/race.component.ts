@@ -3,6 +3,7 @@ import { TournamentService } from '../tournament.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Tournament } from '../shared/tournament.model';
+import { Driver } from '../shared/driver.model';
 
 @Component({
   selector: 'app-race',
@@ -53,9 +54,9 @@ export class RaceComponent implements OnInit {
     for (const [i, place] of this.leaderboard.controls.entries()) {
       for (let team of this.tournament.getTeams()) {
         for (let driver of team.getDrivers()) {
-          console.log(place.value);
           if (driver.getNo() === place.value.place) {
             driver.assignPoints(i < this.tournament.getScore().length ? this.tournament.getScore()[i] : 0);
+            race.push(driver.getNo());
             break;
           }
         }
@@ -69,8 +70,9 @@ export class RaceComponent implements OnInit {
         }
       }
     }
-
+    this.tournament.doRace();
     this.tournamentService.setTournament(this.tournament);
+    this.tournamentService.registerRace(race);
     this.router.navigate(['/results']);
   }
 }
