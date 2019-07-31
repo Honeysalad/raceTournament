@@ -39,4 +39,10 @@ export class LeaderboardComponent implements OnInit {
     });
   }
 
+  public exit(): void {
+    if (this.tournament.getDoneRaces() === this.tournament.getRaces()) {
+      this.router.navigate(['/create']);
+    } else { this.router.navigate(['/race']); }
+  }
+
 }

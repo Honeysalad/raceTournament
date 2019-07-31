@@ -30,7 +30,7 @@
     </div>
 </div>
 <br>
-<button class="btn btn-primary">
-    Next Race or End Championship
-</button><!--ngIf or something else for text-->
+<button class="btn btn-primary" (click)="exit()">
+    {{tournament.getDoneRaces() === tournament.getRaces() ? 'End Championship' : 'Next Race'}}
+</button>
 
