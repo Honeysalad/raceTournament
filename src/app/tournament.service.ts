@@ -1,10 +1,8 @@
 import { Tournament } from './shared/tournament.model';
-import { TOURNAMENT } from './tournament';
-import { Driver } from './shared/driver.model';
 
 export class TournamentService {
 
-    private tournament: Tournament = TOURNAMENT;
+    private tournament: Tournament;
     private races: number[][] = [];
 
     public getTournament(): Tournament {
