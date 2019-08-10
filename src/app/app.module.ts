@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,8 @@ import { TournamentService } from './tournament.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(ROUTES, {scrollPositionRestoration: 'enabled'})
+    RouterModule.forRoot(ROUTES, {scrollPositionRestoration: 'enabled'}),
+    BrowserAnimationsModule
   ],
   providers: [TournamentService],
   bootstrap: [AppComponent]
