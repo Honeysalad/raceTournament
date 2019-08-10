@@ -28,7 +28,7 @@ import { TournamentService } from './tournament.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, {scrollPositionRestoration: 'enabled'})
   ],
   providers: [TournamentService],
   bootstrap: [AppComponent]
