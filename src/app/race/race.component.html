@@ -6,13 +6,13 @@
     <div formArrayName="places">
         <div class="form-group" *ngFor="let place of form.get('places').controls; let placeIndex = index;" [formGroupName]="placeIndex">
             <div class="row">
-                <div class="col-md-1">
+                <div class="col-1 col-md-1">
                     <label for="place">
                         <b *ngIf="placeIndex < tournament.getScore().length; else optionalPlace">{{placeIndex + 1}}</b>
                         <ng-template #optionalPlace>{{placeIndex + 1}}</ng-template>
                     </label>
                 </div>
-                <div class="col-md-11">
+                <div class="col-11 col-md-11">
                     <input 
                         type="number"
                         class="form-control"
