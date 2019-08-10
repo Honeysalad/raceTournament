@@ -4,8 +4,11 @@
 .container {
     margin-top: 2em;
 }
-h2, h3, h4, button{
+h2, h3, h4, button {
     margin: 0.5em 0 1em 0;
+}
+h2.tournament-name {
+    font-weight: 400;
 }
 .btn-primary, .btn-primary:disabled {
     background-color: #c23616;
